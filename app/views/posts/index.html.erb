@@ -5,16 +5,14 @@
   <tr>
     <td>title</td>
     <td>content</td>
-    <td>created at</td>
-    <td>update at</td>
+    <td>action</td>
   </tr>
   </thead>
   <% @posts.each do |post| %>
     <tr>
       <td><%= post.title %></td>
       <td><%= post.content %></td>
-      <td><%= post.created_at %></td>
-      <td><%= post.updated_at %></td>
+      <td></td>
     </tr>
   <% end %>
 </table>

@@ -36,4 +36,11 @@ class PostsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = 'Post destroyed successfully'
+    redirect_to posts_path
+  end
 end

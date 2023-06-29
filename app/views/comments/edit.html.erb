@@ -2,3 +2,5 @@
 <h2>Edit Comment ID: <%= @comment.id %></h2>
 
 <%= render partial: 'form', locals: { comment: @comment, url: post_comment_path(@post, @comment) } %>
+
+<%= link_to 'Post comments', post_comments_path(@post) %>

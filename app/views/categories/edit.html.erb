@@ -1,0 +1,4 @@
+<h1>Edit Category id: <%= @category.id %></h1>
+
+<%= render partial: 'form', locals: { category: @category } %>
+<%= link_to :categories, categories_path %>

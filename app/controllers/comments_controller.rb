@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
       flash[:notice] = 'Comment update successfully'
       redirect_to post_comments_path(@post)
     else
-      flash.now[:alert] = 'Comment update failed'
+      flash[:alert] = 'Comment update failed'
       render :edit, status: :unprocessable_entity
     end
   end

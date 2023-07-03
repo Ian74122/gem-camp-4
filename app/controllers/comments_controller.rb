@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   before_action :validate_comment_owner, only: [:edit, :update, :destroy]
 
   def index
-    @comments = @post.comments
+    @comments = @post.comments.includes(:user)
   end
 
   def new

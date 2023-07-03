@@ -7,6 +7,7 @@
     <td>title</td>
     <td>content</td>
     <td>user</td>
+    <td>comment count</td>
     <td>category</td>
     <td>action</td>
   </tr>
@@ -16,6 +17,7 @@
       <td><%= post.title %></td>
       <td><%= post.content %></td>
       <td><%= post.user.email %></td>
+      <td><%= post.comments_count %></td>
       <td><%= post.categories.pluck(:name).join(',') %></td>
       <td>
         <%= link_to :show, post_path(post) %>

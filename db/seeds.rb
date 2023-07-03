@@ -5,8 +5,18 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+(3..10).to_a.sample.times do
+  user = User.create(email: Faker::Internet.email, password: 'qwer4321')
+  puts "create user : #{user.email}"
+end
 
-20.times do |i|
-  post = Post.create(title: "title #{0}", content: "content #{i}")
+(20..40).to_a.sample.times do
+  post = Post.create(title: Faker::Lorem.sentence(word_count: 3),
+                     content: Faker::Lorem.paragraph,
+                     user: User.all.sample)
   puts "create post id #{post.id}"
+  (5..20).to_a.sample.times do
+    comment = post.comments.create(content: Faker::Lorem.sentence(word_count: 6), user: User.all.sample)
+    puts "create comment id #{comment.id}"
+  end
 end

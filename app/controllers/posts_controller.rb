@@ -1,10 +1,28 @@
 class PostsController < ApplicationController
+  require 'csv'
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :validate_post_owner, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.includes(:categories, :user).page(params[:page])
+    respond_to do |format|
+      format.html
+      format.xml { render xml: @posts.as_json }
+      format.csv {
+        csv_string = CSV.generate do |csv|
+          csv << %w[email id title content categories created_at]
+
+          @posts.each do |p|
+            csv << [
+              p.user&.email, p.id, p.title, p.content,
+              p.categories.pluck(:name).join(','), p.created_at
+            ]
+          end
+        end
+        render plain: csv_string
+      }
+    end
   end
 
   def new

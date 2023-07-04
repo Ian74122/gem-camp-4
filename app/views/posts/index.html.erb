@@ -1,6 +1,6 @@
 <h1>Post List</h1>
 <%= link_to 'New', new_post_path %>
-
+<%= link_to 'Export', posts_path(format: :csv, page: params[:page]) %>
 <table>
   <thead>
   <tr>
@@ -30,4 +30,6 @@
   <% end %>
 </table>
 <%= paginate @posts %>
+
+
 

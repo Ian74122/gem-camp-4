@@ -1,16 +1,17 @@
-<h1>Post List</h1>
+<h1><%= t('post_list') %></h1>
+<%= Post.model_name.human %>
 <%= link_to 'New', new_post_path %>
 <%= link_to 'Export', posts_path(format: :csv, page: params[:page]) %>
 <table>
   <thead>
   <tr>
-    <td>image</td>
-    <td>title</td>
-    <td>content</td>
-    <td>user</td>
-    <td>comment count</td>
-    <td>category</td>
-    <td>action</td>
+    <td><%= Post.human_attribute_name(:image) %></td>
+    <td><%= Post.human_attribute_name(:title) %></td>
+    <td><%= Post.human_attribute_name(:content) %></td>
+    <td><%= Post.human_attribute_name(:user) %></td>
+    <td><%= Post.human_attribute_name(:comment_count) %></td>
+    <td><%= Post.human_attribute_name(:category) %></td>
+    <td><%= Post.human_attribute_name(:action) %></td>
   </tr>
   </thead>
   <% @posts.each do |post| %>

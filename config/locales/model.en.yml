@@ -1,0 +1,15 @@
+en:
+  activerecord:
+    models:
+      post:
+        one: Post
+        other: Posts
+    attributes:
+      post:
+        title: Title
+        content: Content
+        image: Image
+        user: User
+        comment_count: Comment count
+        category: Category
+        action: Action

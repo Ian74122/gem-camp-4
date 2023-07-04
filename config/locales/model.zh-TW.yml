@@ -1,0 +1,15 @@
+zh-TW:
+  activerecord:
+    models:
+      post:
+        one: 活動
+        other: 多篇活動
+    attributes:
+      post:
+        title: 標題
+        content: 內容
+        image: 圖片
+        user: 用戶
+        comment_count: 留言數
+        category: 類別
+        action: 操作

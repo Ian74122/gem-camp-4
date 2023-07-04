@@ -23,6 +23,8 @@
     <% else %>
       <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
     <% end %>
+    <%= link_to 'EN', params.permit!.merge(locale: 'en') %>
+    <%= link_to 'zh-TW', params.permit!.merge(locale: 'zh-TW') %>
     <%= yield %>
   </body>
 </html>

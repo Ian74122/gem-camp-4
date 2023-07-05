@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  default_scope { where(deleted_at: nil) }
   validates :title, presence: true
   validates :content, presence: true
 
@@ -8,4 +9,8 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :genre
   mount_uploader :image, ImageUploader
+
+  def destroy
+    update(deleted_at: Time.current)
+  end
 end

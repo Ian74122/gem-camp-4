@@ -17,7 +17,7 @@
   <% @posts.each do |post| %>
     <tr>
       <td><%= image_tag (post.image.url) if post.image.present? %></td>
-      <td><%= post.title %></td>
+      <td><%= "[#{post.genre.name}]#{post.title}" %></td>
       <td><%= post.content %></td>
       <td><%= post.user.email %></td>
       <td><%= post.comments_count %></td>

@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   before_action :validate_post_owner, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.includes(:categories, :user).page(params[:page])
+    @posts = Post.includes(:categories, :user, :genre).page(params[:page])
     respond_to do |format|
       format.html
       format.xml { render xml: @posts.as_json }

@@ -20,3 +20,12 @@ end
     puts "create comment id #{comment.id}"
   end
 end
+
+%w[Activity Event Topic News Sport e-Sport Sabong].each do |name|
+  genre = Genre.find_or_initialize_by(name: name)
+  if genre.new_record? && genre.save
+    puts "create genre name: #{genre.name}"
+  else
+    puts "#{genre.name} already in database"
+  end
+end

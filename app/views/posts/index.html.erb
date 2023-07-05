@@ -10,6 +10,7 @@
     <td><%= Post.human_attribute_name(:user) %></td>
     <td><%= Post.human_attribute_name(:comment_count) %></td>
     <td><%= Post.human_attribute_name(:category) %></td>
+    <td><%= Post.human_attribute_name(:created_at) %></td>
     <td><%= Post.human_attribute_name(:action) %></td>
   </tr>
   </thead>
@@ -21,6 +22,7 @@
       <td><%= post.user.email %></td>
       <td><%= post.comments_count %></td>
       <td><%= post.categories.pluck(:name).join(',') %></td>
+      <td><%= post.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
       <td>
         <%= link_to :show, post_path(post) %>
         <%= link_to :edit, edit_post_path(post) if user_signed_in? && post.user == current_user %>

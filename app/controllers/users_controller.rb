@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def show; end
 
   def edit
-    current_user.create_profile unless current_user.create_profile
+    current_user.create_profile unless current_user.profile
   end
 
   def update

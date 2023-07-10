@@ -1,5 +1,5 @@
 <h1>Edit Post id: <%= @post.id %></h1>
 
-<%= render partial: 'form', locals: { post: @post } %>
+<%= render partial: 'form', locals: { post: @post, url: post_path(@post, page: params[:page]) } %>
 
 <%= link_to :index, posts_path %>

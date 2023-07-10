@@ -1,0 +1,12 @@
+<h1>HI <%= current_user.email %></h1>
+
+<ul>
+  <li><%= current_user.profile.birthday %></li>
+  <li><%= current_user.profile.legal_name %></li>
+  <li><%= current_user.profile.location %></li>
+  <li><%= current_user.profile.education %></li>
+  <li><%= current_user.profile.occupation %></li>
+  <li><%= current_user.profile.bio %></li>
+  <li><%= current_user.profile.specialty %></li>
+</ul>
+<%= link_to :edit, edit_user_path %>

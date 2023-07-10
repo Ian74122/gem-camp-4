@@ -9,4 +9,5 @@ Rails.application.routes.draw do
     resources :comments, except: :show
   end
   resources :categories, except: :show
+  resource :user, only: [:show, :edit, :update]
 end

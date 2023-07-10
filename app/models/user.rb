@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :comments
+  has_one :profile
+
+  accepts_nested_attributes_for :profile
 end

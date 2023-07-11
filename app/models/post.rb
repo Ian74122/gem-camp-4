@@ -1,5 +1,8 @@
 class Post < ApplicationRecord
   default_scope { where(deleted_at: nil) }
+  scope :hot_posts, -> { order(comments_count: :desc).limit(3) }
+  scope :filter_by_title, -> (title) { where(title: title) }
+  scope :filter_by_content, -> (content) { where(content: content) }
   validates :title, presence: true
   validates :content, presence: true
 

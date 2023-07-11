@@ -12,7 +12,7 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :genre
   mount_uploader :image, ImageUploader
-
+  delegate :email, to: :user
   def destroy
     update(deleted_at: Time.current)
   end

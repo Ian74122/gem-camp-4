@@ -68,4 +68,17 @@ class PhLocationService
       address_city.save
     end
   end
+
+  def fetch_barangay
+    request = RestClient.get("#{url}/barangays/")
+    data = JSON.parse(request.body)
+    Parallel.each(data) do |barangay|
+      address_barangay = Address::Barangay.find_or_initialize_by(code: barangay['code'])
+      address_barangay.name = barangay['name']
+      city_code = barangay['cityCode'] ? barangay['cityCode'] : barangay['municipalityCode']
+      address_barangay.city = Address::City.find_by(code: city_code)
+      address_barangay.save
+    end
+    puts data.count
+  end
 end

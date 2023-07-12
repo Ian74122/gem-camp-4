@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   resource :user, only: [:show, :edit, :update]
   namespace :api do
     namespace :v1 do
-      resources :regions, only: [:index, :show], defaults: { format: :json }
+      resources :regions, only: [:index, :show], defaults: { format: :json } do
+        resources :provinces, only: :index
+      end
+      resources :provinces, only: [:index, :show]
     end
   end
 end

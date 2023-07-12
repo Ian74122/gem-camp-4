@@ -18,7 +18,10 @@ Rails.application.routes.draw do
       resources :provinces, only: [:index, :show], defaults: { format: :json } do
         resources :cities, only: :index
       end
-      resources :cities, defaults: { format: :json }
+      resources :cities, only: [:index, :show], defaults: { format: :json } do
+        resources :barangays, only: :index
+      end
+      resources :barangays, only: [:index, :show], defaults: { format: :json }
     end
   end
 end

@@ -10,4 +10,9 @@ Rails.application.routes.draw do
   end
   resources :categories, except: :show
   resource :user, only: [:show, :edit, :update]
+  namespace :api do
+    namespace :v1 do
+      resources :regions, only: [:index, :show], defaults: { format: :json }
+    end
+  end
 end

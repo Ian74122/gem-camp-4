@@ -8,4 +8,16 @@ class ApplicationController < ActionController::Base
 
     I18n.locale = session[:locale] || I18n.default_locale
   end
+
+  def after_sign_up_path_for(resource)
+    after_sign_in_path_for(resource) if is_navigational_format?
+  end
+
+  def after_sign_in_path_for(resource)
+    if current_user.admin?
+      admin_users_path
+    else
+      posts_path
+    end
+  end
 end

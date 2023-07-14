@@ -6,11 +6,11 @@ class Api::V1::ProvincesController < ApplicationController
     else
       provinces = Address::Province.all
     end
-    render json: provinces
+    render json: provinces, each_serializer: ProvinceSerializer
   end
 
   def show
     province = Address::Province.find(params[:id])
-    render json: province
+    render json: province, serializer: ProvinceSerializer
   end
 end

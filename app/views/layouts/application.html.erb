@@ -11,21 +11,23 @@
   </head>
 
   <body>
-    <% if flash[:notice] %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
-    <% if flash[:alert] %>
-      <p class="alert"><%= alert %></p>
-    <% end %>
-    <% if user_signed_in? %>
-      Signed in as <%= current_user.email %>.
-      <%= button_to 'Sign out', destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
-    <% end %>
-    <%=  %><br>
-    <%= link_to 'EN', params.permit!.merge(locale: 'en') %>
-    <%= link_to 'zh-TW', params.permit!.merge(locale: 'zh-TW') %>
-    <%= yield %>
+    <div class="container">
+      <% if flash[:notice] %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <% if flash[:alert] %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
+      <% if user_signed_in? %>
+        Signed in as <%= current_user.email %>.
+        <%= button_to 'Sign out', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
+      <% end %>
+      <%=  %><br>
+      <%= link_to 'EN', params.permit!.merge(locale: 'en') %>
+      <%= link_to 'zh-TW', params.permit!.merge(locale: 'zh-TW') %>
+      <%= yield %>
+    </div>
   </body>
 </html>

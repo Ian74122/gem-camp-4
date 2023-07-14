@@ -24,4 +24,8 @@ Rails.application.routes.draw do
       resources :barangays, only: [:index, :show], defaults: { format: :json }
     end
   end
+
+  namespace :admin do
+    resources :users
+  end
 end

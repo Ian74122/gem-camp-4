@@ -15,12 +15,12 @@ class Post < ApplicationRecord
   mount_uploader :image, ImageUploader
   delegate :email, to: :user
 
-  after_create :send_email_to_user
+  after_create :check_geo_location
   def destroy
     update(deleted_at: Time.current)
   end
 
-  def send_email_to_user
-    HeavydutyJob.perform_later
+  def check_geo_location
+    CheckGeoLocationJob.perform_later(id)
   end
 end

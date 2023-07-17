@@ -36,5 +36,8 @@ module App
     config.i18n.default_locale = :en
     config.i18n.available_locales = [:en, 'zh-TW']
     config.time_zone = 'Hong Kong'
+
+    config.active_job.queue_adapter = :sidekiq
+    config.eager_load_paths += %W( #{config.root}/app/jobs )
   end
 end

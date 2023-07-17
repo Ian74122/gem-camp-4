@@ -39,5 +39,6 @@ module App
 
     config.active_job.queue_adapter = :sidekiq
     config.eager_load_paths += %W( #{config.root}/app/jobs )
+    config.active_record.yaml_column_permitted_classes = [BigDecimal, ActiveSupport::TimeWithZone, ActiveSupport::TimeZone, Time]
   end
 end

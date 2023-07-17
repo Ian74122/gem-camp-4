@@ -31,4 +31,6 @@ Rails.application.routes.draw do
       resources :users
     end
   end
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 end

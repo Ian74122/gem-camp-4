@@ -13,7 +13,13 @@ class Post < ApplicationRecord
   belongs_to :genre
   mount_uploader :image, ImageUploader
   delegate :email, to: :user
+
+  after_create :send_email_to_user
   def destroy
     update(deleted_at: Time.current)
+  end
+
+  def send_email_to_user
+    HeavydutyJob.perform_later
   end
 end

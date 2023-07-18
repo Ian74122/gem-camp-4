@@ -25,7 +25,9 @@ class Order < ApplicationRecord
   end
 
   def revise_balance
-    user.update(balance: user.balance + amount)
+    user.with_lock do
+      user.update(balance: user.balance + amount)
+    end
   end
 
   def deduct_balance

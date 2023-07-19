@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   require 'csv'
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :validate_post_owner, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.includes(:categories, :user, :genre).page(params[:page])
@@ -48,9 +47,14 @@ class PostsController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    authorize @post, :edit?, policy_class: PostPolicy
+    authorize @post, :in_one_week?, policy_class: PostPolicy
+  end
 
   def update
+    authorize @post, :update?, policy_class: PostPolicy
+    authorize @post, :in_one_week?, policy_class: PostPolicy
     if @post.update(post_params)
       flash[:notice] = 'Post update successfully'
       redirect_to posts_path(page: params[:page])
@@ -61,6 +65,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    authorize @post, :destroy?, policy_class: PostPolicy
+
     @post.destroy
     flash[:notice] = 'Post destroyed successfully'
     redirect_to posts_path
@@ -74,12 +80,5 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
-  end
-
-  def validate_post_owner
-    unless @post.user == current_user
-      flash[:notice] = 'the post not belongs to you'
-      redirect_to posts_path
-    end
   end
 end

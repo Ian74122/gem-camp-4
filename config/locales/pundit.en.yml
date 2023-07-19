@@ -1,0 +1,8 @@
+en:
+  pundit:
+    default: You are not authorized to perform this action
+    post_policy:
+      edit?: You are not authorized to edit this post
+      update?: You are not authorized to edit this post
+      destroy?: You are not authorized to edit this post
+      in_one_week?: The Post already one week more, you can't edit it.

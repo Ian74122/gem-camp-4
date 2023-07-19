@@ -63,6 +63,8 @@ gem 'geocoder'
 gem 'phonelib'
 gem 'aasm'
 gem 'pundit'
+gem 'scenic'
+gem 'scenic-mysql_adapter'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

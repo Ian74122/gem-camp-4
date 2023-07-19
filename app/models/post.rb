@@ -10,6 +10,7 @@ class Post < ApplicationRecord
   has_many :comments
   has_many :post_category_ships
   has_many :categories, through: :post_category_ships
+  has_one :post_count_preview
   belongs_to :user
   belongs_to :genre
   mount_uploader :image, ImageUploader
@@ -22,5 +23,9 @@ class Post < ApplicationRecord
 
   def check_geo_location
     CheckGeoLocationJob.perform_later(id)
+  end
+
+  def comments_count
+    post_count_preview.count
   end
 end

@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.includes(:categories, :user, :genre).page(params[:page])
+    @posts = Post.includes(:categories, :user, :genre, :post_count_preview).page(params[:page])
     respond_to do |format|
       format.html
       format.xml { render xml: @posts.as_json }

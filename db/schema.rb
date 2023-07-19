@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_18_021228) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_19_032629) do
   create_table "address_barangays", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "city_id"
     t.string "code"
@@ -114,7 +114,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_021228) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.integer "comments_count"
     t.string "image"
     t.bigint "genre_id"
     t.datetime "deleted_at"
@@ -155,4 +154,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_021228) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+
+  create_view "post_count_previews", sql_definition: <<-SQL
+      select `posts`.`id` AS `post_id`,(select count(0) from `comments` where `comments`.`post_id` = `posts`.`id`) AS `count` from `posts` where `posts`.`deleted_at` is null
+  SQL
 end

@@ -1,0 +1,1 @@
+SELECT posts.id as post_id, (SELECT COUNT(*) FROM comments WHERE comments.post_id = posts.id) as `count` FROM `posts` WHERE `posts`.`deleted_at` IS NULL

@@ -1,2 +1,7 @@
 <h1><%= t('hello',  name: current_user&.email) %></h1>
-<p>Welcome to my page!</p>
+<p id='welcome_message'>Welcome to my page!</p>
+
+<div data-controller="hello">
+  <input type="text" data-hello-target="name">
+  <button data-action="click->hello#greet">Greet</button>
+</div>

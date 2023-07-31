@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.includes(:categories, :user, :genre, :post_count_preview).page(params[:page])
+    @posts = Post.includes(:categories, :user, :genre, :post_count_preview, :region, :province, :city, :barangay).page(params[:page])
     respond_to do |format|
       format.html
       format.xml { render xml: @posts.as_json }
@@ -75,7 +75,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :image, :genre_id, category_ids: [])
+    params.require(:post).permit(:title, :content, :image, :genre_id, , :address_region_id, :address_province_id, , :address_city_id, :address_barangay_id, category_ids: [])
   end
 
   def set_post

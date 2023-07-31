@@ -24,4 +24,8 @@ class User < ApplicationRecord
   def clear_phone_number_mark
     self.phone_number = phone_number.gsub(/-/, '')
   end
+
+  def over_18_year_old?
+    age >= 18
+  end
 end

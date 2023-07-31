@@ -20,7 +20,10 @@
       <td><%= image_tag (post.image.url) if post.image.present? %></td>
       <td><%= "[#{post.genre.name}]#{post.title}" %></td>
       <td><%= post.content %></td>
-      <td><%= post.user.email %></td>
+      <td data-controller="clipboard">
+        <span data-clipboard-target="email"><%= post.user.email %></span>
+        <button data-action="clipboard#copy">copy</button>
+      </td>
       <td><%= post.comments_count %></td>
       <td><%= post.categories.pluck(:name).join(',') %></td>
       <td><%= post.ip_address %></td>

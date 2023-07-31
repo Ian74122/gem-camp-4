@@ -7,7 +7,6 @@ export default class extends Controller {
     // this.element.textContent = "Hello World!"
     const element = this.nameTarget
     const name = element.value
-    console.log(`Hello, ${name}!`)
-    document.getElementById("welcome_message").innerText = `Hello, ${name}!`
+    $("#welcome_message").text(`Hello, ${name}!`)
   }
 }
